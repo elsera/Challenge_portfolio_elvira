@@ -6,13 +6,13 @@ I also like to find bugs and their causes in applications.
 I like to solve complex tasks and work in a team, this is a plus of this challenge for me, since it is easier to solve something complex collectively. 
 Teamwork motivates me. My goal is to gain and use skills in using tools for automated testing, as well as communication with like-minded people.
 
-I wish myself and everyone involved in this challenge good luck. And thanks to all the mentors.
+I wish myself and everyone involved in this challenge good luck :smiley:. And thanks to all the mentors.
 
-## TASK 2: selectors
+## Task 2: selectors.
 
-Here are the selectors for each of the elements on the login page that I found:
+Here are the selectors for each of the elements on the login page that I have found:
 
-<img width="350" alt="login_page" src="https://github.com/elsera/images/blob/main/login_page.png?raw=true">
+<kbd><img width="350" alt="login_page" src="https://github.com/elsera/images/blob/main/login_page.png?raw=true"></kbd>
 
 * **scouts_panel_element_xpath**
 ``` 
@@ -43,7 +43,7 @@ Here are the selectors for each of the elements on the login page that I found:
 
 * **empty_fields_reminder_xpath**
 
-<img width="350" alt="empty_fields_message" src="https://github.com/elsera/images/blob/main/empty_fields_message.png?raw=true">
+<kbd><img width="350" alt="empty_fields_message" src="https://github.com/elsera/images/blob/main/empty_fields_message.png?raw=true"></kbd>
 
 ```
 //child::div/span
@@ -55,7 +55,7 @@ Here are the selectors for each of the elements on the login page that I found:
 
 * **invalid_login_data_massage_xpath**
 
-<img width="350" alt="invalid_login_data_massage" src="https://github.com/elsera/images/blob/main/invalid_password_message.png?raw=true">
+<kbd><img width="350" alt="invalid_login_data_massage" src="https://github.com/elsera/images/blob/main/invalid_password_message.png?raw=true"></kbd>
 
 ```
 //*[@id="__next"]/form/div/div[1]/div[3]/span
