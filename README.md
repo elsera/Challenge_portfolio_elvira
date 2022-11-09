@@ -58,7 +58,7 @@ Here are the selectors for each of the elements on the login page that I have fo
 <kbd><img width="350" alt="invalid_login_data_massage" src="https://github.com/elsera/images/blob/main/invalid_password_message.png?raw=true"></kbd>
 
 ```
-//*[@id="__next"]/form/div/div[1]/div[3]/span
+//child::div/span
 
 //*[text()="Identifier or password invalid."]
 
@@ -67,7 +67,7 @@ Here are the selectors for each of the elements on the login page that I have fo
 
 * **remind_password_hyperlink_xpath**
 ```
-//*[@id="__next"]/form/div/div[1]/a
+//div/div[1]/a
 
 //*[text()="Remind password" or text()="Przypomnij hasło"]
 
@@ -85,8 +85,6 @@ Here are the selectors for each of the elements on the login page that I have fo
 
 * **signin_button_xpath**
 ```
-//*[@id="__next"]/form/div/div[2]/button
-
 //button[@type="submit"]
 
 //child::div/button
