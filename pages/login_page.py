@@ -6,13 +6,18 @@ class LoginPage(BasePage):
     password_field_xpath = "//*[@id='password']"
     sign_in_button_xpath = "//button[@type='submit']"
     remind_password_hyperlink_xpath = "//child::div/a"
-    language_option_xpath = "//input[@class='MuiSelect-nativeInput']"
+    language_dropdown_xpath = "//*[@aria-haspopup='listbox']"
+    language_dropdown_list_xpath = "//*[@role='listbox']"
+    language_button_pl_text = "Polski"
+    language_button_en_text = "English"
     scouts_panel_xpath = "//*[text()='Scouts Panel']"
-    invalid_login_data_massage_xpath = "//*[contains(text(),'password invalid')]"
+    invalid_login_data_message_xpath = "//*[contains(text(),'password invalid')]"
+    invalid_login_data_message = "Identifier or password invalid."
     empty_fields_reminder_xpath = "//*[contains(text(),'provide your username')]"
+    empty_fields_reminder = "Please provide your username or your e-mail."
     login_url = 'https://scouts-test.futbolkolektyw.pl/en/login'
-    expected_title = 'Scouts panel - sign in'
-    expected_text = 'Scouts Panel'
+    expected_title = "Scouts panel - sign in"
+    expected_title_text = "Scouts Panel"
 
     def type_in_email(self, email):
         self.field_send_keys(self.login_field_xpath, email)
@@ -23,10 +28,18 @@ class LoginPage(BasePage):
     def click_on_the_signin_button(self):
         self.click_on_the_element(self.sign_in_button_xpath)
 
-    # Comparing expected text with observed value from web element
-    def compare_title_text(self, driver):
-        self.assert_element_text(driver, self.scouts_panel_xpath, self.expected_text)
+    def log_in(self, email, password):
+        self.type_in_email(email)
+        self.type_in_password(password)
+        self.click_on_the_signin_button()
 
     def title_of_page(self):
-        assert self.get_page_title(self.login_url) == self.expected_title
+        assert self.get_page_title() == self.expected_title
+
+    def language_dropdown_option(self, language):
+        self.click_dropdown_menu(self.language_dropdown_xpath,
+                                 self.language_dropdown_list_xpath, language)
+
+
+
 
