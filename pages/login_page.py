@@ -40,6 +40,9 @@ class LoginPage(BasePage):
         self.click_dropdown_menu(self.language_dropdown_xpath,
                                  self.language_dropdown_list_xpath, language)
 
+    def click_on_remind_pwd_hyperlink(self):
+        self.click_on_the_element(self.remind_password_hyperlink_xpath)
+
 
 
 

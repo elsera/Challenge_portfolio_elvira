@@ -1,12 +1,13 @@
-import time
+from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
 
 class Dashboard(BasePage):
-    main_page_panel_button_xpath = "//div[@role='presentation']/ul[1]/div[1]"
-    players_panel_button_xpath = "//div[@role='presentation']/ul[1]/div[2]"
-    language_panel_button_xpath = "//div[@role='presentation']/ul[2]/div[1]"
-    sign_out_panel_button_xpath = "//div[@role='presentation']/ul[2]/div[2]"
+    side_menu_main_page_button_xpath = "//ul[1]/div[1]"
+    side_menu_players_button_xpath = "//ul[1]/div[2]"
+    side_menu_language_button_xpath = "//ul[2]/div[1]"
+    side_menu_sign_out_button_xpath = "//ul[2]/div[2]"
+    players_table_xpath = "//*[@role='grid']"
     add_player_hyperlink_xpath = "(//a[1]/button)[1]"
     logo_platform_image_xpath = "//div[@title='Logo Scouts Panel']"
     dev_team_contact_button = "//span[text()='Dev team contact']/parent::a"
@@ -28,5 +29,23 @@ class Dashboard(BasePage):
 
     def click_on_the_add_player_link(self):
         self.click_on_the_element(self.add_player_hyperlink_xpath)
+
+    def click_on_sign_out_button(self):
+        self.click_on_the_element(self.side_menu_sign_out_button_xpath)
+
+    def click_on_language_button(self):
+        self.click_on_the_element(self.side_menu_language_button_xpath)
+
+    def change_language(self):
+        previous_language = self.driver.find_element(By.XPATH, self.side_menu_language_button_xpath).text
+        self.click_on_language_button()
+        current_language = self.driver.find_element(By.XPATH, self.side_menu_language_button_xpath).text
+        assert previous_language != current_language
+
+    def click_on_players_button(self):
+        self.click_on_the_element(self.side_menu_players_button_xpath)
+
+    def click_on_main_page_button(self):
+        self.click_on_the_element(self.side_menu_main_page_button_xpath)
 
 

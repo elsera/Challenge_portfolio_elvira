@@ -6,9 +6,8 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.login_page import LoginPage
 from pages.dashboard_page import Dashboard
+from pages.remind_password_page import RemindPasswordPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
-import subprocess
-subprocess.run("pytest --html=report.html --self-contained-html", shell=True)
 
 
 class TestLoginPage(unittest.TestCase):
@@ -16,7 +15,6 @@ class TestLoginPage(unittest.TestCase):
     @classmethod
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
-        #self.driver = webdriver.Chrome(executable_path=DRIVER_PATH)
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         self.driver.get('https://scouts-test.futbolkolektyw.pl/en')
         self.driver.fullscreen_window()
@@ -63,6 +61,27 @@ class TestLoginPage(unittest.TestCase):
         self.login_page.language_dropdown_option('Polski')
         self.driver.save_screenshot("./screenshots/login_page_language_option.png")
         Image.open("./screenshots/login_page_language_option.png").show()
+
+    # Test log out from the system
+    def test_log_out_from_the_system(self):
+        self.login_page.title_of_page()
+        self.login_page.log_in('user07@getnada.com', 'Test-1234')
+        dashboard_page = Dashboard(self.driver)
+        dashboard_page.title_of_page()
+        dashboard_page.click_on_sign_out_button()
+        self.login_page.title_of_page()
+        self.driver.save_screenshot("./screenshots/login_page_signed_out.png")
+        Image.open("./screenshots/login_page_signed_out.png").show()
+
+    # Test remind password
+    def test_remind_password(self):
+        self.login_page.title_of_page()
+        self.login_page.click_on_remind_pwd_hyperlink()
+        remind_pwd_page = RemindPasswordPage(self.driver)
+        remind_pwd_page.get_page_title()
+        self.driver.save_screenshot("./screenshots/remind_password_page.png")
+        Image.open("./screenshots/remind_password_page.png").show()
+
 
 
     @classmethod
